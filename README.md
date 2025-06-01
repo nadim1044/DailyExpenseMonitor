@@ -1,4 +1,4 @@
-# Daily Money Monitor
+# Daily Expense Monitor
 
 A Flutter application built using **GetX** and **Clean Architecture**. It helps users track their
 daily income and expenses with a clean and scalable code structure.
