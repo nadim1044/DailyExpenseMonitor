@@ -68,7 +68,8 @@ final controller = Get.put(CounterController());
 
 Obx
 (
-() => Text('Count: ${controller.count}
+() =>
+Text('Count: ${controller.count}
 '
 )
 );
@@ -224,7 +225,10 @@ memory.
 ```dart
 Get.lazyPut
 (
-() => TransactionController(), fenix: true);
+() =>
+TransactionController(),
+fenix: true
+);
 ```
 
 - Controller is re-instantiated on demand after being removed.
@@ -287,7 +291,9 @@ Get.delete<TransactionController>
 // Register
 Get.lazyPut
 (
-() => TransactionController(), fenix: true);
+() =>
+TransactionController(), fenix: true
+);
 
 // Access
 final controller = Get.find<TransactionController>();
