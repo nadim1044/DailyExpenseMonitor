@@ -66,12 +66,9 @@ class CounterController extends GetxController {
 
 final controller = Get.put(CounterController());
 
-Obx
-(
-() =>
-Text('Count: ${controller.count}
-'
-)
+Obx(() => 
+    Text('Count: ${controller.count}'
+  )
 );
 ```
 
@@ -84,12 +81,10 @@ Use for **simple and automatic** UI updates from state.
 More advanced than `Obx`, includes lifecycle and multiple observable bindings.
 
 ```dart
-GetX<CounterController>
-(
-init: CounterController(),
-builder: (controller) => Text('Value: ${controller.count}'
-)
-,
+GetX<CounterController>(
+    init: CounterController(),
+    builder: (controller) => Text('Value: ${controller.count}'
+  ),
 );
 ```
 
@@ -161,11 +156,8 @@ practices. It includes explanations of `Get.put`, `Get.lazyPut`, `Get.putIfAbsen
 Immediately creates and registers a controller.
 
 ```dart
-Get.put
-(
-TransactionController
-(
-)
+Get.put(
+  TransactionController()
 );
 ```
 
@@ -180,14 +172,8 @@ TransactionController
 Lazily creates the controller when first accessed.
 
 ```dart
-Get.lazyPut
-(
-(
-)
-=>
-TransactionController
-(
-)
+Get.lazyPut(() =>
+  TransactionController()
 );
 ```
 
@@ -201,14 +187,8 @@ TransactionController
 Creates and registers a controller only if it hasn’t been registered yet.
 
 ```dart
-Get.putIfAbsent<TransactionController>
-(
-(
-)
-=>
-TransactionController
-(
-)
+Get.putIfAbsent<TransactionController>(() =>
+  TransactionController()
 );
 ```
 
@@ -223,11 +203,9 @@ Use `fenix: true` with `lazyPut()` to automatically recreate the controller if i
 memory.
 
 ```dart
-Get.lazyPut
-(
-() =>
-TransactionController(),
-fenix: true
+Get.lazyPut(() => 
+  TransactionController(), 
+  fenix: true
 );
 ```
 
@@ -255,7 +233,7 @@ Use `Get.isRegistered<T>()` to check before creating:
 
 ```dart
 if (!Get.isRegistered<TransactionController>()) {
-Get.put(TransactionController());
+  Get.put(TransactionController());
 }
 ```
 
@@ -266,8 +244,7 @@ Get.put(TransactionController());
 You can remove a controller using:
 
 ```dart
-Get.delete<TransactionController>
-();
+Get.delete<TransactionController>();
 ```
 
 - Frees memory.
@@ -289,10 +266,8 @@ Get.delete<TransactionController>
 
 ```dart
 // Register
-Get.lazyPut
-(
-() =>
-TransactionController(), fenix: true
+Get.lazyPut(() => 
+  TransactionController(), fenix: true
 );
 
 // Access
