@@ -6,8 +6,10 @@ class TransactionDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: ColoredBox(color: Colors.red),
+      appBar: AppBar(
+        title: const Text('Transaction Details'),
+      ),
+      body: const ColoredBox(color: Colors.red),
     );
   }
 }
