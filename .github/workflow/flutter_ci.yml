@@ -1,0 +1,54 @@
+name: Daily Money Monitor CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    name: Flutter Continuous Integration
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Get source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Install Flutter SDK
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: stable
+          cache: true
+
+      # 3. Verify environment
+      - name: Flutter doctor
+        run: flutter doctor -v
+
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 5. Static analysis (quality gate)
+      - name: Analyze source code
+        run: flutter analyze
+
+      # 6. Unit & widget tests
+      - name: Run tests
+        run: flutter test --coverage
+
+      # 7. Build release APK (CI build validation)
+      - name: Build release APK
+        run: flutter build apk --release
+
+      # 8. Upload build artifact
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flut
