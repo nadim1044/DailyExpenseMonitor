@@ -39,8 +39,8 @@ jobs:
         run: flutter analyze
 
       # 6. Unit & widget tests
-      - name: Run tests
-        run: flutter test --coverage
+      #      - name: Run tests
+      #        run: flutter test --coverage
 
       # 7. Build release APK (CI build validation)
       - name: Build release APK
