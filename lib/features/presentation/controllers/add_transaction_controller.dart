@@ -7,6 +7,5 @@ class AddTransactionController extends GetxController {
   Future<void> addTransaction(TransactionModel txn) async {
     'Transaction Model ${txn.toMap()}'.logD;
     await DatabaseHelper().insertTransaction(txn);
-    // loadTransactions(); // reload after insertion
   }
 }
