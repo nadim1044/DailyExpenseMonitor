@@ -44,7 +44,8 @@ jobs:
 
       # 7. Build release APK (CI build validation)
       - name: Build release APK
-        run: flutter build apk --release
+        run: flutter build apk --release --target=lib/daily_monitor_app.dart
+
 
       # 8. Upload build artifact
       - name: Upload APK artifact
