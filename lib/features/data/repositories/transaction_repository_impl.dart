@@ -11,4 +11,10 @@ class TransactionRepositoryImpl implements TransactionRepository {
   Future<List<TransactionsEntities>> getTransactions() {
     return dataSource.getTransactions();
   }
+
+  @override
+  Future<int> addTransaction(TransactionsEntities transaction) {
+    // TODO: implement addTransaction
+    throw UnimplementedError();
+  }
 }

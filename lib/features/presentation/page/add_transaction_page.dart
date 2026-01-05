@@ -41,7 +41,7 @@ class AddTransactionPage extends StatelessWidget {
                       amount: amount,
                       date: DateFormat('HH:mm:ss').format(DateTime.now()),
                     );
-                    Get.put(AddTransactionController());
+
                     final controller = Get.find<AddTransactionController>();
                     controller.addTransaction(txn);
                     Get.back(); // close the screen

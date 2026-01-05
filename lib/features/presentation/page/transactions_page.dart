@@ -5,7 +5,7 @@ import 'package:daily_expense_monitor_app/shared/widgets/app_custom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TransactionsPage extends StatelessWidget {
+class TransactionsPage extends GetView<GetTransactionsController> {
   const TransactionsPage({super.key});
 
   @override
@@ -17,9 +17,8 @@ class TransactionsPage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            GetX(
-              init: GetTransactionsController(),
-              builder: (controller) => Expanded(
+            Obx(
+              () => Expanded(
                 child: ListView.builder(
                   itemCount: controller.transactions.length,
                   itemBuilder: (context, index) {

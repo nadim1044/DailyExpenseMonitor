@@ -13,7 +13,7 @@ class TransactionsEntities {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      'id': int.tryParse(id),
       'title': title,
       'amount': amount,
       'date': date.toIso8601String(), // ISO format for DateTime
