@@ -23,9 +23,18 @@ class TransactionsPage extends GetView<GetTransactionsController> {
                   itemCount: controller.transactions.length,
                   itemBuilder: (context, index) {
                     final txn = controller.transactions[index];
-                    return ListTile(
-                      title: Text(txn.title),
-                      subtitle: Text('₹${txn.amount.toStringAsFixed(2)}'),
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed(
+                          AppRoutes.transactionDetails,
+                          arguments: txn,
+                        );
+                      },
+                      behavior: HitTestBehavior.opaque,
+                      child: ListTile(
+                        title: Text(txn.title),
+                        subtitle: Text('₹${txn.amount.toStringAsFixed(2)}'),
+                      ),
                     );
                   },
                 ),

@@ -29,8 +29,6 @@ class GetTransactionsBinding extends Bindings {
     );
 
     Get.put(GetTransactionsController(
-      transactionDataSource: Get.find<TransactionDataSource>(),
-      transactionRepository: Get.find<TransactionRepository>(),
       getTransactions: Get.find<GetTransactionsUseCase>(),
     ));
   }

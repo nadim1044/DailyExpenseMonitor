@@ -6,12 +6,10 @@ import '../../../helpers/mocks.dart';
 
 void main() {
   late MockTransactionDataSource dataSource;
-  late MockTransactionRepository dataRepository;
   late TransactionRepositoryImpl repository;
 
   setUp(() {
     dataSource = MockTransactionDataSource();
-    dataRepository = MockTransactionRepository();
     repository = TransactionRepositoryImpl(dataSource);
   });
 
@@ -24,7 +22,7 @@ void main() {
   });
 
   test('addTransactions returns inserted id', () async {
-    final transaction = FakeTransactionsEntities();
+    final transaction = FakeTransactionsModel();
     when(() => dataSource.addTransactions(transaction))
         .thenAnswer((_) async => 1);
 

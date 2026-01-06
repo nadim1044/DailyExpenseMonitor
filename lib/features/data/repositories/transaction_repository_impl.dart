@@ -8,13 +8,24 @@ class TransactionRepositoryImpl implements TransactionRepository {
   TransactionRepositoryImpl(this.dataSource);
 
   @override
-  Future<List<TransactionsEntities>> getTransactions() {
-    return dataSource.getTransactions();
+  Future<List<TransactionsEntities>> getTransactions() async {
+    final transactions = await dataSource.getTransactions();
+    final transactionEntities = transactions
+        .map(
+          (transaction) => TransactionsEntities(
+            id: '${transaction.id}',
+            title: transaction.title,
+            amount: transaction.amount,
+            date: transaction.date,
+          ),
+        )
+        .toList();
+    return transactionEntities;
   }
 
   @override
   Future<int> addTransaction(TransactionsEntities transaction) {
-    // TODO: implement addTransaction
-    throw UnimplementedError();
+    final transactionModel = transaction.toModel();
+    return dataSource.addTransactions(transactionModel);
   }
 }
