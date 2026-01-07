@@ -2,4 +2,6 @@ import 'package:daily_expense_monitor_app/features/domain/entities/transactions_
 
 abstract class TransactionRepository {
   Future<List<TransactionsEntities>> getTransactions();
+
+  Future<int> addTransaction(TransactionsEntities transaction);
 }

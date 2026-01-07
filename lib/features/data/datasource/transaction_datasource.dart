@@ -1,7 +1,7 @@
-import 'package:daily_expense_monitor_app/features/domain/entities/transactions_entities.dart';
+import 'package:daily_expense_monitor_app/app/db/models/transaction_model.dart';
 
 abstract class TransactionDataSource {
-  Future<List<TransactionsEntities>> getTransactions();
+  Future<List<TransactionModel>> getTransactions();
 
-  Future<int> addTransactions(TransactionsEntities transaction);
+  Future<int> addTransactions(TransactionModel transaction);
 }

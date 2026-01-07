@@ -117,17 +117,17 @@ final _textTheme = _lightThemeData.textTheme.copyWith(
 );
 
 /// Tab bar theme
-final _tabBarTheme = TabBarTheme(
-  labelColor: _themeTextColors.blackTextColor,
-  labelStyle: _textTheme.titleLarge,
-  unselectedLabelStyle: _textTheme.titleLarge,
-  indicator: UnderlineTabIndicator(
-    borderSide: const BorderSide(color: Colors.black),
-    insets: EdgeInsets.symmetric(vertical: AppSize.h10),
-  ),
-  overlayColor: WidgetStateProperty.all<Color>(Colors.grey.shade100),
-  unselectedLabelColor: _themeTextColors.textDisabled,
-);
+// final _tabBarTheme = TabBarTheme(
+//   labelColor: _themeTextColors.blackTextColor,
+//   labelStyle: _textTheme.titleLarge,
+//   unselectedLabelStyle: _textTheme.titleLarge,
+//   indicator: UnderlineTabIndicator(
+//     borderSide: const BorderSide(color: Colors.black),
+//     insets: EdgeInsets.symmetric(vertical: AppSize.h10),
+//   ),
+//   overlayColor: WidgetStateProperty.all<Color>(Colors.grey.shade100),
+//   unselectedLabelColor: _themeTextColors.textDisabled,
+// );
 
 /// Application Light Theme
 final lightTheme = _lightThemeData.copyWith(

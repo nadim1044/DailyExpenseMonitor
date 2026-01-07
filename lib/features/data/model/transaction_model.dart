@@ -13,7 +13,7 @@ class TransactionModel extends TransactionsEntities {
       id: json['id'],
       title: json['title'],
       amount: json['amount'],
-      date: DateTime.parse(json['date']),
+      date: json['date'],
     );
   }
 }
