@@ -21,16 +21,19 @@ class AddTransactionPage extends StatelessWidget {
           child: Column(
             children: [
               TextField(
+                key: const Key('transaction_name_field'),
                 controller: titleController,
                 decoration: const InputDecoration(labelText: "Title"),
               ),
               TextField(
+                key: const Key('transaction_amount_field'),
                 controller: amountController,
                 decoration: const InputDecoration(labelText: "Amount"),
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 20),
               ElevatedButton(
+                key: const Key('submit_transaction_button'),
                 onPressed: () {
                   final title = titleController.text;
                   final amount = double.tryParse(amountController.text) ?? 0;

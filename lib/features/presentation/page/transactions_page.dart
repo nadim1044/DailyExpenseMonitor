@@ -44,6 +44,7 @@ class TransactionsPage extends GetView<GetTransactionsController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        key: const Key('add_transaction_fab'),
         onPressed: () {
           Get.toNamed(AppRoutes.addTransaction)?.then(
             (value) {
