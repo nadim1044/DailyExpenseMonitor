@@ -24,7 +24,7 @@ class AppPages {
     ),
     GetPage(
         name: AppRoutes.addTransaction,
-        page: () => AddTransactionPage(),
+        page: () => const AddTransactionPage(),
         binding: AddTransactionBinding()),
     GetPage(
       name: AppRoutes.transactionDetails,

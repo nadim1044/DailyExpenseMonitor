@@ -15,7 +15,7 @@ void main() {
       await tester.pumpWidget(const MyApp());
       await tester.pumpAndSettle();
 
-      // 1️⃣ Verify FAB exists
+      //  Verify FAB exists
       final fabFinder = find.byKey(const Key('add_transaction_fab'));
       expect(fabFinder, findsOneWidget);
 
@@ -23,18 +23,18 @@ void main() {
       await tester.tap(fabFinder);
       await tester.pumpAndSettle();
 
-      // 2️⃣ Generate random data
+      // Generate random data
       final random = Random();
       final transactionName = 'Test Tx ${random.nextInt(10000)}';
       final transactionAmount = (random.nextDouble() * 1000).toStringAsFixed(2);
 
-      // 3️⃣ Enter transaction name
+      // Enter transaction name
       await tester.enterText(
         find.byKey(const Key('transaction_name_field')),
         transactionName,
       );
 
-      // 4️⃣ Enter transaction amount
+      //Enter transaction amount
       await tester.enterText(
         find.byKey(const Key('transaction_amount_field')),
         transactionAmount,
@@ -42,7 +42,7 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      // 5️⃣ Tap Add button
+      // Tap Add button
       await tester.tap(
         find.byKey(const Key('submit_transaction_button')),
       );
@@ -50,7 +50,7 @@ void main() {
       // Wait for DB write + navigation
       await tester.pumpAndSettle();
 
-      // 6️⃣ Verify transaction appears in list
+      // Verify transaction appears in list
       expect(find.text(transactionName), findsOneWidget);
       expect(find.text('₹$transactionAmount'), findsOneWidget);
     },
