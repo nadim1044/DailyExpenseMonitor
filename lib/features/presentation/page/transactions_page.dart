@@ -19,25 +19,30 @@ class TransactionsPage extends GetView<GetTransactionsController> {
             const SizedBox(height: 20),
             Obx(
               () => Expanded(
-                child: ListView.builder(
-                  itemCount: controller.transactions.length,
-                  itemBuilder: (context, index) {
-                    final txn = controller.transactions[index];
-                    return GestureDetector(
-                      onTap: () {
-                        Get.toNamed(
-                          AppRoutes.transactionDetails,
-                          arguments: txn,
-                        );
-                      },
-                      behavior: HitTestBehavior.opaque,
-                      child: ListTile(
-                        title: Text(txn.title),
-                        subtitle: Text('₹${txn.amount.toStringAsFixed(2)}'),
+                child: controller.transactions.isNotEmpty
+                    ? ListView.builder(
+                        itemCount: controller.transactions.length,
+                        itemBuilder: (context, index) {
+                          final txn = controller.transactions[index];
+                          return GestureDetector(
+                            onTap: () {
+                              Get.toNamed(
+                                AppRoutes.transactionDetails,
+                                arguments: txn,
+                              );
+                            },
+                            behavior: HitTestBehavior.opaque,
+                            child: ListTile(
+                              title: Text(txn.title),
+                              subtitle:
+                                  Text('₹${txn.amount.toStringAsFixed(2)}'),
+                            ),
+                          );
+                        },
+                      )
+                    : const Center(
+                        child: Text('No Transaction'),
                       ),
-                    );
-                  },
-                ),
               ),
             )
           ],
