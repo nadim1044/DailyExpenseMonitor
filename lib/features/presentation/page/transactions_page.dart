@@ -1,7 +1,9 @@
 import 'package:daily_expense_monitor_app/app_routes/app_routes.dart';
+import 'package:daily_expense_monitor_app/features/presentation/controllers/base_controller.dart';
 import 'package:daily_expense_monitor_app/features/presentation/controllers/get_transactions_controller.dart';
 import 'package:daily_expense_monitor_app/l10n/l10n.dart';
 import 'package:daily_expense_monitor_app/shared/widgets/app_custom_bar.dart';
+import 'package:daily_expense_monitor_app/shared/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,38 +16,45 @@ class TransactionsPage extends GetView<GetTransactionsController> {
       appBar: AppCustomAppBar(title: Text(context.l10n.transactions)),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Obx(
-              () => Expanded(
-                child: controller.transactions.isNotEmpty
-                    ? ListView.builder(
-                        itemCount: controller.transactions.length,
-                        itemBuilder: (context, index) {
-                          final txn = controller.transactions[index];
-                          return GestureDetector(
-                            onTap: () {
-                              Get.toNamed(
-                                AppRoutes.transactionDetails,
-                                arguments: txn,
+        child: Obx(
+          () => switch (controller.status.value) {
+            UiStatus.success => Column(
+                children: [
+                  const SizedBox(height: 20),
+                  Expanded(
+                    child: controller.transactions.isNotEmpty
+                        ? ListView.builder(
+                            itemCount: controller.transactions.length,
+                            itemBuilder: (context, index) {
+                              final txn = controller.transactions[index];
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(
+                                    AppRoutes.transactionDetails,
+                                    arguments: txn,
+                                  );
+                                },
+                                behavior: HitTestBehavior.opaque,
+                                child: ListTile(
+                                  title: Text(txn.title),
+                                  subtitle:
+                                      Text('₹${txn.amount.toStringAsFixed(2)}'),
+                                ),
                               );
                             },
-                            behavior: HitTestBehavior.opaque,
-                            child: ListTile(
-                              title: Text(txn.title),
-                              subtitle:
-                                  Text('₹${txn.amount.toStringAsFixed(2)}'),
-                            ),
-                          );
-                        },
-                      )
-                    : const Center(
-                        child: Text('No Transaction'),
-                      ),
+                          )
+                        : const Center(
+                            child: Text('No Transaction'),
+                          ),
+                  )
+                ],
               ),
-            )
-          ],
+            _ => const Center(
+                child: LoadingIndicator(
+                  color: Color.fromARGB(255, 20, 20, 20),
+                ),
+              ),
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
