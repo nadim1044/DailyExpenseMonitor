@@ -1,3 +1,4 @@
+import 'package:daily_expense_monitor_app/app/error/exceptions.dart';
 import 'package:daily_expense_monitor_app/features/domain/entities/transactions_entities.dart';
 import 'package:daily_expense_monitor_app/features/domain/usecase/get_transactions_usecase.dart';
 import 'package:daily_expense_monitor_app/features/presentation/controllers/base_controller.dart';
@@ -22,8 +23,17 @@ class GetTransactionsController extends BaseController {
     setLoading();
     Future.delayed(const Duration(seconds: 3)).then(
       (value) {
-        loadTransactions();
-        setSuccess();
+        try {
+          loadTransactions();
+        } on DatabaseException catch (e) {
+          Get.snackbar(
+            'Failed',
+            e.message,
+            snackPosition: SnackPosition.BOTTOM,
+          );
+        } finally {
+          setSuccess();
+        }
       },
     );
   }

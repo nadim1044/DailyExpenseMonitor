@@ -1,3 +1,4 @@
+import 'package:daily_expense_monitor_app/app/error/exceptions.dart';
 import 'package:daily_expense_monitor_app/features/domain/entities/transactions_entities.dart';
 import 'package:daily_expense_monitor_app/features/domain/usecase/add_transaction_usecase.dart';
 import 'package:daily_expense_monitor_app/features/presentation/controllers/base_controller.dart';
@@ -31,11 +32,21 @@ class AddTransactionController extends BaseController {
         snackPosition: SnackPosition.BOTTOM,
       );
     } else {
-      isSaving.value = true;
-      await Future.delayed(const Duration(seconds: 2));
-      await addTransactionUseCase.call(txn);
-      isSaving.value = false;
-      Get.back();
+      try {
+        isSaving.value = true;
+        await Future.delayed(const Duration(seconds: 2));
+        await addTransactionUseCase.call(txn);
+        isSaving.value = false;
+        Get.back();
+      } on DatabaseException catch (e) {
+        Get.snackbar(
+          'Failed',
+          e.message,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      } finally {
+        isSaving.value = false;
+      }
     }
   }
 }
