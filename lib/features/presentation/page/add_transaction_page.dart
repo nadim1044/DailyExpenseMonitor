@@ -29,26 +29,36 @@ class AddTransactionPage extends GetView<AddTransactionController> {
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                key: const Key('submit_transaction_button'),
-                onPressed: () {
-                  final title = controller.titleController.text;
-                  final amount =
-                      double.tryParse(controller.amountController.text) ?? 0;
-                  if (title.isNotEmpty && amount > 0) {
-                    final TransactionsEntities txn = TransactionsEntities(
-                      id: '',
-                      title: title,
-                      amount: amount,
-                      date: DateTime.now().toIso8601String(),
-                    );
+              Obx(() => ElevatedButton(
+                    key: const Key('submit_transaction_button'),
+                    onPressed: controller.isSaving.value
+                        ? null
+                        : () async {
+                            final title = controller.titleController.text;
+                            final amount = double.tryParse(
+                                    controller.amountController.text) ??
+                                0;
 
-                    controller.addTransaction(txn);
-                    Get.back(); // close the screen
-                  }
-                },
-                child: const Text("Add"),
-              ),
+                            final txn = TransactionsEntities(
+                              id: '',
+                              title: title,
+                              amount: amount,
+                              date: DateTime.now().toIso8601String(),
+                            );
+
+                            await controller.addTransaction(txn);
+                          },
+                    child: controller.isSaving.value
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : const Text("Add"),
+                  ))
             ],
           ),
         ),
