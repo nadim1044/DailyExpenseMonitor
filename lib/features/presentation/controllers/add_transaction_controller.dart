@@ -32,6 +32,7 @@ class AddTransactionController extends BaseController {
       );
     } else {
       isSaving.value = true;
+      await Future.delayed(const Duration(seconds: 2));
       await addTransactionUseCase.call(txn);
       isSaving.value = false;
       Get.back();

@@ -1,8 +1,9 @@
 import 'package:daily_expense_monitor_app/features/domain/entities/transactions_entities.dart';
 import 'package:daily_expense_monitor_app/features/domain/usecase/get_transactions_usecase.dart';
+import 'package:daily_expense_monitor_app/features/presentation/controllers/base_controller.dart';
 import 'package:get/get.dart';
 
-class GetTransactionsController extends GetxController {
+class GetTransactionsController extends BaseController {
   GetTransactionsController({
     required this.getTransactions,
   });
@@ -18,6 +19,12 @@ class GetTransactionsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadTransactions();
+    setLoading();
+    Future.delayed(const Duration(seconds: 3)).then(
+      (value) {
+        loadTransactions();
+        setSuccess();
+      },
+    );
   }
 }

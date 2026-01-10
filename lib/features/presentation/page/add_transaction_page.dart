@@ -29,7 +29,11 @@ class AddTransactionPage extends GetView<AddTransactionController> {
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 20),
-              Obx(() => ElevatedButton(
+              Obx(
+                () => SizedBox(
+                  height: 48, // FIXED HEIGHT
+                  width: double.infinity, // optional
+                  child: ElevatedButton(
                     key: const Key('submit_transaction_button'),
                     onPressed: controller.isSaving.value
                         ? null
@@ -48,17 +52,26 @@ class AddTransactionPage extends GetView<AddTransactionController> {
 
                             await controller.addTransaction(txn);
                           },
-                    child: controller.isSaving.value
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: Colors.white,
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      child: controller.isSaving.value
+                          ? const SizedBox(
+                              key: ValueKey('loader'),
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Text(
+                              'Add',
+                              key: ValueKey('text'),
                             ),
-                          )
-                        : const Text("Add"),
-                  ))
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
