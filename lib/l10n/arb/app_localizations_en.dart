@@ -16,4 +16,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get add_transactions => 'Add Transactions';
+
+  @override
+  String get transaction_details => 'Transaction Details';
+
+  @override
+  String get transaction_id => 'Transaction ID';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get time => 'Time';
 }

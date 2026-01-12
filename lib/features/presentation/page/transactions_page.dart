@@ -1,7 +1,9 @@
 import 'package:daily_expense_monitor_app/app_routes/app_routes.dart';
+import 'package:daily_expense_monitor_app/extensions/sizedbox_extension.dart';
 import 'package:daily_expense_monitor_app/features/presentation/controllers/base_controller.dart';
 import 'package:daily_expense_monitor_app/features/presentation/controllers/get_transactions_controller.dart';
 import 'package:daily_expense_monitor_app/l10n/l10n.dart';
+import 'package:daily_expense_monitor_app/res/dimension.dart';
 import 'package:daily_expense_monitor_app/shared/widgets/app_custom_bar.dart';
 import 'package:daily_expense_monitor_app/shared/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +17,12 @@ class TransactionsPage extends GetView<GetTransactionsController> {
     return Scaffold(
       appBar: AppCustomAppBar(title: Text(context.l10n.transactions)),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(AppSize.h14),
         child: Obx(
           () => switch (controller.status.value) {
             UiStatus.success => Column(
                 children: [
-                  const SizedBox(height: 20),
+                  AppSize.h10.sizedBoxHeight,
                   Expanded(
                     child: controller.transactions.isNotEmpty
                         ? ListView.builder(

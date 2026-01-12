@@ -2,5 +2,9 @@
   "@@locale": "hi",
   "app_title": "Expense Manager",
   "transactions": "Transactions",
-  "add_transactions": "Add Transactions"
+  "add_transactions": "Add Transactions",
+  "transaction_details": "Transaction Details",
+  "transaction_id": "Transaction ID",
+  "date": "Date",
+  "time": "Time"
 }
