@@ -1,4 +1,5 @@
 import 'package:daily_expense_monitor_app/extensions/ext_build_context.dart';
+import 'package:daily_expense_monitor_app/extensions/sizedbox_extension.dart';
 import 'package:daily_expense_monitor_app/features/domain/entities/transactions_entities.dart';
 import 'package:daily_expense_monitor_app/l10n/l10n.dart';
 import 'package:daily_expense_monitor_app/res/dimension.dart';
@@ -36,15 +37,14 @@ class TransactionDetailsPage extends StatelessWidget {
                       color: BuildContextEx(context).themeColors.greenColor),
             ),
 
-            SizedBox(height: AppSize.h8),
-
+            AppSize.h8.sizedBoxHeight,
             // TITLE
             Text(
               transaction.title,
               style: BuildContextEx(context).textTheme.bodyLarge,
             ),
 
-            SizedBox(height: AppSize.h20),
+            AppSize.h20.sizedBoxHeight,
             const Divider(),
 
             _DetailRow(
