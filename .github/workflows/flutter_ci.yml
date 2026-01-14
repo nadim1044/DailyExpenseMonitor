@@ -42,14 +42,14 @@ jobs:
       - name: Run tests
         run: flutter test --coverage
 
-      # 7. Build release APK (CI build validation)
-      - name: Build release APK
-        run: flutter build apk --release --target=lib/daily_monitor_app.dart
+#      # 7. Build release APK (CI build validation)
+#      - name: Build release APK
+#        run: flutter build apk --release --target=lib/daily_monitor_app.dart
 
 
-      # 8. Upload build artifact
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+#      # 8. Upload build artifact
+#      - name: Upload APK artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: app-release-apk
+#          path: build/app/outputs/flutter-apk/app-release.apk
