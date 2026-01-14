@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1045375148174",
+    "project_id": "dailyexpnsemonitorapp",
+    "storage_bucket": "dailyexpnsemonitorapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045375148174:android:72d80067aef1fb71f1a9df",
+        "android_client_info": {
+          "package_name": "com.example.daily_expense_monitor_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO1go2ov-esrH3KvV6F_zB_QWmjMBebQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
