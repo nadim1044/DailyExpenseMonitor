@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:daily_expense_monitor_app/daily_monitor_app.dart';
 import 'package:daily_expense_monitor_app/features/domain/entities/transactions_entities.dart';
 import 'package:daily_expense_monitor_app/features/presentation/controllers/get_transactions_controller.dart';
@@ -22,9 +20,6 @@ void main() {
       );
 
       await widgetTester.pumpAndSettle();
-      log('Transactions ${controller.transactions}');
-      print(
-          'Transactions## ${controller.transactions.length} ${controller.transactions.isEmpty}');
       if (controller.transactions.isEmpty) {
         expect(find.text('No Transaction'), findsOneWidget);
       } else {
