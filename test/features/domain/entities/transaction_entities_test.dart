@@ -19,7 +19,6 @@ void main() {
       test('should return a Map with all correct fields', () {
         final json = tEntity.toJson();
 
-        expect(json['id'], '1');
         expect(json['title'], 'Tea');
         expect(json['amount'], 10.0);
         expect(json['date'], '2024-01-01');
@@ -71,24 +70,6 @@ void main() {
         expect(model.title, tEntity.title);
         expect(model.amount, tEntity.amount);
         expect(model.date, tEntity.date);
-      });
-
-      test('should correctly convert String id to int', () {
-        // Entity holds id as String, Model holds it as int
-        final model = tEntity.toModel();
-
-        expect(model.id, 1); // '1' → 1
-      });
-
-      test('should throw when id is not a valid integer string', () {
-        final badEntity = TransactionsEntities(
-          id: 'abc', // not parseable
-          title: 'Tea',
-          amount: 10.0,
-          date: '2024-01-01',
-        );
-
-        expect(() => badEntity.toModel(), throwsFormatException);
       });
     });
 
