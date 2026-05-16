@@ -1,3 +1,4 @@
+import 'package:daily_expense_monitor_app/app/db/db_helper.dart';
 import 'package:daily_expense_monitor_app/app/db/models/transaction_model.dart';
 import 'package:daily_expense_monitor_app/features/data/datasource/transaction_datasource.dart';
 import 'package:daily_expense_monitor_app/features/domain/entities/transactions_entities.dart';
@@ -10,9 +11,9 @@ class MockTransactionRepository extends Mock implements TransactionRepository {}
 
 class MockTransactionDataSource extends Mock implements TransactionDataSource {}
 
-class FakeTransactionsModel extends Mock implements TransactionModel {}
+class FakeTransactionModel extends Fake implements TransactionModel {}
 
-class FakeTransactionsEntities extends Mock implements TransactionsEntities {}
+class FakeTransactionsEntities extends Fake implements TransactionsEntities {}
 
 class FakeGetTransactionsUseCase extends Mock
     implements GetTransactionsUseCase {
@@ -23,8 +24,15 @@ class FakeGetTransactionsUseCase extends Mock
 }
 
 class FakeAddTransactionUseCase extends Mock implements AddTransactionUseCase {
+  int callCount = 0;
+  TransactionsEntities? lastSubmitted;
+
   @override
   Future<int> call(TransactionsEntities transaction) async {
-    return 0;
+    callCount++;
+    lastSubmitted = transaction;
+    return 1;
   }
 }
+
+class MockDatabaseHelper extends Mock implements DatabaseHelper {}

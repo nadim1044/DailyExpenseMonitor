@@ -3,32 +3,40 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('TransactionModel', () {
-    test('fromJson parses correctly', () {
-      final json = {
-        'id': 1,
-        'title': 'Coffee',
-        'amount': 120.0,
-        'date': '2024-01-01'
-      };
+    final tModel = TransactionModel(
+      title: 'Coffee',
+      amount: 10,
+      date: DateTime.now().toIso8601String(),
+      id: 1,
+    );
 
-      final model = TransactionModel.fromMap(json);
+    test(
+      'toMap',
+      () {
+        final modelMap = tModel.toMap();
 
-      expect(model.title, 'Coffee');
-      expect(model.amount, 120.0);
-    });
+        expect(modelMap['id'], 1);
+        expect(modelMap['amount'], 10);
+        expect(modelMap['title'], 'Coffee');
+      },
+    );
 
-    test('toJson converts correctly', () {
-      final model = TransactionModel(
-        id: 1,
-        title: 'Coffee',
-        amount: 120.0,
-        date: '2024-01-01',
-      );
+    test(
+      'fromMap',
+      () {
+        final json = {
+          'id': 1,
+          'title': 'Coffee',
+          'amount': 120.0,
+          'date': '2024-01-01'
+        };
+        final fromMapModel = TransactionModel.fromMap(json);
 
-      final json = model.toMap();
-
-      expect(json['title'], 'Coffee');
-      expect(json['amount'], 120.0);
-    });
+        expect(fromMapModel.title, 'Coffee');
+        expect(fromMapModel.amount, 120.0);
+        expect(fromMapModel.date, '2024-01-01');
+        expect(fromMapModel.id, 1);
+      },
+    );
   });
 }

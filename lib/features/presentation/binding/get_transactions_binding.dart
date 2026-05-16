@@ -1,3 +1,4 @@
+import 'package:daily_expense_monitor_app/app/db/db_helper.dart';
 import 'package:daily_expense_monitor_app/features/data/datasource/transaction_datasource.dart';
 import 'package:daily_expense_monitor_app/features/data/datasource/transaction_datasource_impl.dart';
 import 'package:daily_expense_monitor_app/features/data/repositories/transaction_repository_impl.dart';
@@ -11,7 +12,7 @@ class GetTransactionsBinding extends Bindings {
   void dependencies() {
     // Data source
     Get.lazyPut<TransactionDataSource>(
-      () => TransactionDatasourceImpl(),
+      () => TransactionDatasourceImpl(DatabaseHelper()),
     );
 
     // Repository

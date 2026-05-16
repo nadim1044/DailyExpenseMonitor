@@ -5,10 +5,14 @@ import 'package:daily_expense_monitor_app/features/data/datasource/transaction_d
 import 'package:daily_expense_monitor_app/utils/logger.dart';
 
 class TransactionDatasourceImpl implements TransactionDataSource {
+  const TransactionDatasourceImpl(this._dbHelper);
+
+  final DatabaseHelper _dbHelper;
+
   @override
   Future<List<TransactionModel>> getTransactions() async {
-    final data = await DatabaseHelper().getTransactions();
     try {
+      final data = await _dbHelper.getTransactions();
       return data
           .map((model) => TransactionModel(
                 id: model.id,
@@ -26,7 +30,7 @@ class TransactionDatasourceImpl implements TransactionDataSource {
   Future<int> addTransactions(TransactionModel transaction) {
     'Transaction Model ${transaction.toMap()}'.logD;
     try {
-      return DatabaseHelper().insertTransaction(transaction);
+      return _dbHelper.insertTransaction(transaction);
     } catch (e) {
       throw const DatabaseException('Failed to complete transaction');
     }
