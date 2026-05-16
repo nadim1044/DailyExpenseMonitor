@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('TransactionsEntities |', () {
     // Fixture
-    final tEntity = TransactionsEntities(
+    const tEntity = TransactionsEntities(
       id: '1',
       title: 'Tea',
       amount: 10.0,
@@ -32,7 +32,7 @@ void main() {
       });
 
       test('should handle zero amount', () {
-        final entity = TransactionsEntities(
+        const entity = TransactionsEntities(
           id: '2',
           title: 'Free',
           amount: 0.0,
@@ -45,7 +45,7 @@ void main() {
       });
 
       test('should handle empty title', () {
-        final entity = TransactionsEntities(
+        const entity = TransactionsEntities(
           id: '3',
           title: '',
           amount: 5.0,
@@ -78,13 +78,13 @@ void main() {
     // ─────────────────────────────────────────
     group('equality |', () {
       test('two entities with same fields should be equal', () {
-        final entity1 = TransactionsEntities(
+        const entity1 = TransactionsEntities(
           id: '1',
           title: 'Tea',
           amount: 10.0,
           date: '2024-01-01',
         );
-        final entity2 = TransactionsEntities(
+        const entity2 = TransactionsEntities(
           id: '1',
           title: 'Tea',
           amount: 10.0,
@@ -95,13 +95,13 @@ void main() {
       });
 
       test('two entities with different amounts should not be equal', () {
-        final entity1 = TransactionsEntities(
+        const entity1 = TransactionsEntities(
           id: '1',
           title: 'Tea',
           amount: 10.0,
           date: '2024-01-01',
         );
-        final entity2 = TransactionsEntities(
+        const entity2 = TransactionsEntities(
           id: '1',
           title: 'Tea',
           amount: 99.0,

@@ -1,7 +1,7 @@
 import 'package:daily_expense_monitor_app/features/domain/entities/transactions_entities.dart';
 
 class TransactionModel extends TransactionsEntities {
-  TransactionModel({
+  const TransactionModel({
     required super.id,
     required super.title,
     required super.amount,

@@ -20,7 +20,7 @@ void main() {
     date: '2024-01-01',
   );
 
-  final tTransactionEntity = TransactionsEntities(
+  const tTransactionEntity = TransactionsEntities(
     id: '1',
     title: 'Coffee',
     amount: 5.0,
