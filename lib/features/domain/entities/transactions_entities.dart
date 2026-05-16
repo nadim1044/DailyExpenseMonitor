@@ -7,7 +7,7 @@ class TransactionsEntities extends Equatable {
   final double amount;
   final String date;
 
-  TransactionsEntities({
+  const TransactionsEntities({
     required this.id,
     required this.title,
     required this.amount,
