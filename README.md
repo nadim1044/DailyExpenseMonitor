@@ -292,5 +292,3 @@ void onClose() {
 Use `onClose()` to clean up resources when the controller is removed.
 
 ---
-
-Feel free to modify this guide for your specific project structure such as Daily Money Monitor.
